@@ -2,12 +2,11 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+st.echo("backend: TkAgg matplotlib") 
 
 
 st.header("SoftGrow")
 st.write("Welcome to SoftGrow!")
-
-
 # Function to convert user input to float list
 @st.cache
 def convert_input(user_input):
