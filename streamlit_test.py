@@ -1,6 +1,7 @@
 import streamlit as st
 import time
 import numpy as np
+st.head("Welcome to SoftGrow!")
 progress_bar = st.sidebar.progress(0)
 status_text = st.sidebar.empty()
 last_rows = np.random.randn(1, 1)
