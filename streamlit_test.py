@@ -7,13 +7,15 @@ st.write("SoftGrow!")
 st.title('User Input Numbers Line Chart')
 
 # User inputs numbers
-user_input = st.text_input("Enter some numbers (comma separated):")
+user_input = st.text_input("Enter some numbers1 (comma separated):")
+user_input = st.text_input("Enter some numbers2 (comma separated):")
 
 if user_input:
     try:
-        numbers = list(map(int, user_input.split(',')))
+        numbers1 = list(map(int, user_input.split(',')))
+        numbers2 = list(map(int, user_input.split(',')))
         # Display line chart with user input numbers
-        st.line_chart(numbers)
+        st.line_chart(numbers1 and numbers2)
     except ValueError:
         st.write("Please enter only comma separated numbers.")
 else:
