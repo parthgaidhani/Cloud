@@ -1,7 +1,7 @@
 import streamlit as st
 import numpy as np
 
-st.write("SoftGrow!")
+st.title("SoftGrow!")
 
 # Title of the app
 st.title('User Input Numbers Line Chart')
