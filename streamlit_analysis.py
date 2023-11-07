@@ -1,4 +1,4 @@
-# Import necessary libraries
+
 import streamlit as st
 import pandas as pd
 
@@ -6,7 +6,8 @@ import pandas as pd
 st.title("SoftGrow!")
 
 # Display a title on the app
-st.title('User Input Data File Analysis')
+st.title('Data visualization!')
+st.write("Upload your data file and visualize it according to your choice.")
 
 # User uploads a CSV file
 uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
@@ -17,15 +18,19 @@ if uploaded_file is not None:
         # Load the CSV file into a pandas DataFrame
         df = pd.read_csv(uploaded_file)
 
-        # User selects a column to analyze from the dropdown menu which contains all column names of the uploaded CSV file
-        column_to_analyze = st.selectbox('Choose a column to analyze:', df.columns)
+        
 
-        # Display line chart with selected column data
-        st.line_chart(df[column_to_analyze])
 
-        # Print if there are any null values in the DataFrame
-        missing_values = df.isnull().sum()
-        st.write("Missing values in each column: ", missing_values)
+        # Display a title for the scatterplot
+        st.markdown('Use this Streamlit app to make your own scatterplot!')
+
+        # User selects x and y variables for the scatterplot from the dropdown menu which contains all column names of the uploaded CSV file
+        selected_x_var = st.selectbox('What do want the x variable to be?', df.columns) 
+        selected_y_var = st.selectbox('What about the y?', df.columns) 
+
+        # Display scatterplot with selected x and y variables
+        chart_data = df[[selected_x_var, selected_y_var]]
+        st.line_chart(chart_data)
 
     except Exception as e:
         # Display any error that occurs during the process
