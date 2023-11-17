@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <h1> SoftGrow! </h1>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        canvas {
+            width: 100%;
+            height: auto;
+        }
+        .button {
+            /* Box Model */
+            box-sizing: border-box;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0px 20px;
+            min-height: 40px;
+            min-width: 0px;
+            max-width: 480px;
+            overflow: hidden;
+        
+            /* Typography */
+            font-family: -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 20px;
+            text-align: center;
+            color: #ffffff;
+        
+            /* Visual */
+            background-color: #0A66C2;
+            border: 0;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+            vertical-align: middle;
+        
+            /* Interaction */
+            touch-action: manipulation;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        
+        .button:hover,
+        .button:focus { 
+            background-color: #16437E;
+        }
+        
+        .button:active {
+            background: #09223b;
+            color: rgba(255, 255, 255, .7);
+        }
+        
+        .button:disabled { 
+            cursor: not-allowed;
+            background: rgba(0, 0, 0, .08);
+            color: rgba(0, 0, 0, .3);
+        }
+    </style>
+</head>
+<body>
+    
+    <div>
+        <label for="numbers">Enter numbers (Inputs separated by commas):</label>
+        <input type="text" id="numbers" name="numbers">
+        <button class="button" role="button" onclick="updateChart()">Update Chart</button>
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script>
+        // ... rest of your JavaScript code ...
+        var myChart = new Chart(document.getElementById('myChart'), {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: 'User Input Numbers',
+                    data: [],
+                    backgroundColor: 'rgba(0, 100, 0, 0.5)', // Changed to dark green
+                    borderColor: 'rgba(0, 100, 0, 1)', // Changed to dark green
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        function updateChart() {
+            var numbers = document.getElementById('numbers').value.split(',').map(Number);
+            if (numbers.some(isNaN)) {
+                alert('Invalid input! Please enter numbers separated by commas.');
+                return;
+            }
+
+            myChart.data.labels = Array.from({length: numbers.length}, (_, i) => i + 1);
+            myChart.data.datasets[0].data = numbers;
+            myChart.update();
+        }
+    </script>
+</body>
+</html>
