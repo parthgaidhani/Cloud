@@ -3,7 +3,7 @@ import pandas as pd
 import streamlit as st
 
 st.title("Data Analysis!!")
-st.markdown("Use this Streamlit app to make your own scatterplot!")
+st.markdown("make your own scatterplot!")
 
 data_file = st.file_uploader("Upload Your Data CSV (default provided)")
 
