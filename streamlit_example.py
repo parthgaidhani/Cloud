@@ -4,7 +4,7 @@ import streamlit as st
 import statsmodels.api as sm
 
 # Set Streamlit app title and description
-st.title("Interactive Data Analysis")
+st.title("SoftGrow Data Analysis")
 st.markdown("Explore your data with customizable scatterplots and regression analysis!")
 
 # User uploads a data file
