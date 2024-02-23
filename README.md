@@ -1,4 +1,4 @@
 # SoftGrow! 
-Click this link :- https://softgrow-cloud.streamlit.app/
+ Click this link :- https://softgrow.streamlit.app/
 #  Data Analysis web application!
 
