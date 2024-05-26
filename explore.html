@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoftGrow - Data Exploration</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="text-center">SoftGrow - Data Exploration</h1>
+
+    <div class="mt-5">
+        <h2>Scatterplot</h2>
+        <div id="scatterplot"></div>
+    </div>
+
+    <div class="mt-5">
+        <h2>Correlation/Counts Visualization</h2>
+        {% for column, fig_json in heatmap_figs %}
+            <h3>{{ column }} (Numeric)</h3>
+            <div id="heatmap_{{ loop.index }}"></div>
+            <script>
+                var heatmap_data_{{ loop.index }} = {{ fig_json | safe }};
+                Plotly.newPlot('heatmap_{{ loop.index }}', heatmap_data_{{ loop.index }}.data, heatmap_data_{{ loop.index }}.layout);
+            </script>
+        {% endfor %}
+        {% for column, fig_json in bar_chart_figs %}
+            <h3>{{ column }} (Non-Numeric)</h3>
+            <div id="barchart_{{ loop.index }}"></div>
+            <script>
+                var barchart_data_{{ loop.index }} = {{ fig_json | safe }};
+                Plotly.newPlot('barchart_{{ loop.index }}', barchart_data_{{ loop.index }}.data, barchart_data_{{ loop.index }}.layout);
+            </script>
+        {% endfor %}
+    </div>
+
+    <div class="mt-5">
+        <h2>Pair Plot</h2>
+        <div id="pairplot"></div>
+    </div>
+
+    <div class="mt-5">
+        <h2>Histograms</h2>
+        {% for column, fig_json in histogram_figs %}
+            <h3>{{ column }}</h3>
+            <div id="histogram_{{ loop.index }}"></div>
+            <script>
+                var histogram_data_{{ loop.index }} = {{ fig_json | safe }};
+                Plotly.newPlot('histogram_{{ loop.index }}', histogram_data_{{ loop.index }}.data, histogram_data_{{ loop.index }}.layout);
+            </script>
+        {% endfor %}
+    </div>
+
+    <div class="mt-5">
+        <h2>3D Scatter Plot</h2>
+        <div id="scatterplot3d"></div>
+    </div>
+
+    <div class="mt-5">
+        <h2>Time Series Plot</h2>
+        <div id="timeseries"></div>
+    </div>
+
+    <div class="mt-5">
+        <h2>Box Plot (Numerical vs. Categorical)</h2>
+        <div id="boxplot"></div>
+    </div>
+
+    <div class="mt-5">
+        <h2>Linear Regression</h2>
+        <div id="linear_regression"></div>
+    </div>
+</div>
+
+<script>
+    var scatterplot_data = {{ scatterplot_json | safe }};
+    Plotly.newPlot('scatterplot', scatterplot_data.data, scatterplot_data.layout);
+
+    var pair_plot_data = {{ pair_plot_json | safe }};
+    Plotly.newPlot('pairplot', pair_plot_data.data, pair_plot_data.layout);
+
+    var scatterplot_3d_data = {{ scatterplot_3d_json | safe }};
+    Plotly.newPlot('scatterplot3d', scatterplot_3d_data.data, scatterplot_3d_data.layout);
+
+    var time_series_data = {{ time_series_json | safe }};
+    Plotly.newPlot('timeseries', time_series_data.data, time_series_data.layout);
+
+    var box_plot_data = {{ box_plot_json | safe }};
+    Plotly.newPlot('boxplot', box_plot_data.data, box_plot_data.layout);
+
+    var linear_regression_data = {{ linear_regression_json | safe }};
+    Plotly.newPlot('linear_regression', linear_regression_data.data, linear_regression_data.layout);
+</script>
+</body>
+</html>
