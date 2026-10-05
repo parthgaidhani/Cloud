@@ -1,3 +1,1 @@
 # SoftGrow! 
-[![Repository Health](https://mcp-studio-19251.web.app/api/badge/react/react.svg?label=Repository%20Health)](https://mcp-studio-19251.web.app/verify/MDH-OD504?token=v1.eyJ2IjoxLCJvd25lciI6InJlYWN0IiwicmVwbyI6InJlYWN0Iiwic2NvcmUiOjY2LCJncmFkZSI6IkIiLCJpYXQiOjE3OTExNzk1MzB9.DaR1IHFG5vErSMSzyZnRcztQscrxmEqzS4YC54xpAs4)
-[![Repository Readiness](https://mcp-studio-19251.web.app/api/badge/react/react.svg?label=Repository%20Readiness&format=readiness&color=2874FB)](https://mcp-studio-19251.web.app/verify/MDH-OD504?token=v1.eyJ2IjoxLCJvd25lciI6InJlYWN0IiwicmVwbyI6InJlYWN0Iiwic2NvcmUiOjY2LCJncmFkZSI6IkIiLCJpYXQiOjE3OTExNzk1MzB9.DaR1IHFG5vErSMSzyZnRcztQscrxmEqzS4YC54xpAs4)
